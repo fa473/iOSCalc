@@ -1,10 +1,4 @@
-//
-//  MasterViewController.m
-//  
-//
-//  Created by Francis Arocha on 11/26/16.
-//  Copyright © 2016 Francis Arocha. All rights reserved.
-//
+
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
@@ -23,12 +17,17 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
+    
+    //take away empty cell lines in the table
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 
