@@ -37,7 +37,6 @@
         self.finalScoreField.text = finalScoreString;
         self.finalWeightField.text = finalWeightString;
         self.courseGradeField.text = courseScoreString;
-        
     }
 }
 

@@ -26,7 +26,7 @@
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
     
-    //take away empty cell lines in the table
+    // Take away empty cell lines in the table
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -114,7 +114,7 @@
 
 
 - (void)configureCell:(UITableViewCell *)cell withCourse:(Course *)course {
-    //customize the presentation of information displayed in each cell
+    // Customize the presentation of information displayed in each cell
     NSString *gradeString = [NSString stringWithFormat:@"%0.2f", course.score];
     cell.textLabel.text = [NSString stringWithFormat:@"Course: %@", course.courseID];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Grade: %@", gradeString];
