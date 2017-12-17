@@ -7,6 +7,7 @@
 //
 #import "DetailViewController.h"
 
+
 @interface DetailViewController ()
 
 @end
@@ -43,10 +44,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    
+    //create "Calculate" button to appear over decimal keypad
+    UIButton *calculateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [calculateBtn addTarget:self action:@selector(calculateScore) forControlEvents:UIControlEventTouchUpInside];
+    [calculateBtn setTitle:@"Calculate" forState:UIControlStateNormal];
+    calculateBtn.backgroundColor = [UIColor orangeColor];
+    [calculateBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    calculateBtn.frame = CGRectMake(0, 0, self.view.frame.size.width, 60);
+    
+    self.hwScoreField.inputAccessoryView = calculateBtn;
+    self.hwWeightField.inputAccessoryView = calculateBtn;
+    self.midtermScoreField.inputAccessoryView = calculateBtn;
+    self.midtermWeightField.inputAccessoryView = calculateBtn;
+    self.finalScoreField.inputAccessoryView = calculateBtn;
+    self.finalWeightField.inputAccessoryView = calculateBtn;
+    
+    
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -78,7 +100,10 @@
 }
 
 
-- (IBAction)calculateScore:(id)sender {
+- (void)calculateScore {
+    //dismiss keyboard
+    [self.view endEditing:true];
+    
     //convert strings into float values
     float avgHWScore = [self.hwScoreField.text floatValue];
     float hwWeight = [self.hwWeightField.text floatValue];

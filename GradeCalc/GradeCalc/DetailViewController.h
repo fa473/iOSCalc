@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *finalWeightField;
 @property (weak, nonatomic) IBOutlet UITextField *courseGradeField;
 
-- (IBAction)calculateScore:(id)sender;
+
 
 
 @end
