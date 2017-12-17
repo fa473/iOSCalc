@@ -56,11 +56,12 @@
     UIButton *calculateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [calculateBtn addTarget:self action:@selector(calculateScore) forControlEvents:UIControlEventTouchUpInside];
     [calculateBtn setTitle:@"Calculate" forState:UIControlStateNormal];
-    calculateBtn.backgroundColor = [UIColor clearColor];
+    calculateBtn.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.5];
     [calculateBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     calculateBtn.frame = CGRectMake(0, 0, self.view.frame.size.width, 60);
     calculateBtn.layer.borderWidth = 1;
-    calculateBtn.layer.borderColor = [UIColor clearColor].CGColor;
+    calculateBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    [calculateBtn.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0]];
     
     self.hwScoreField.inputAccessoryView = calculateBtn;
     self.hwWeightField.inputAccessoryView = calculateBtn;
@@ -105,6 +106,7 @@
 - (void)calculateScore {
     //dismiss keyboard
     [self.view endEditing:true];
+    // TODO: show hidden grade label
     
     //convert strings into float values
     float avgHWScore = [self.hwScoreField.text floatValue];
